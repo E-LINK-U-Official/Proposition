@@ -96,16 +96,6 @@ try:
             st.write("Self-Sovereign Identity. The card serves as the offline Master-Key for border security.")
             import pandas as pd
 
-# Datos del Benchmark
-df_friccion = pd.DataFrame({
-    'Región': ['Japón (Suica)', 'Unión Europea'],
-    'Coste de Fricción (€)': [50, 1020]
-})
-
-st.write("### Visualización del 'Impuesto de Ineficiencia'")
-st.bar_chart(data=df_friccion, x='Región', y='Coste de Fricción (€)', color="#2e7d32")
-
-
         # --- LEGAL DISCLAIMER ---
         st.divider()
         st.markdown(
