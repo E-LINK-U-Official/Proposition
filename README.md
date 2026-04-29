@@ -1,7 +1,8 @@
 # 🇪🇺 E-Link-U: Stopping the €459B Administrative Hemorrhage
 
 [![DOI](https://shields.io)](https://zenodo.org)
-[![Status](https://shields.io)](#-implementation-roadmap)
+[![Estado](https://shields.io)](#-hoja-de-ruta-de-implementaci%C3%B3n)
+
 
 **E-Link-U** is a strategic architecture designed to eliminate administrative friction in the EU while complying with the highest regulatory standards (eIDAS 2.0 / GDPR).
 
