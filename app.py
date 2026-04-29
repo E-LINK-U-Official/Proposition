@@ -105,4 +105,42 @@ def handle_error():
 
 if df.empty:
     handle_error()
+    # --- SECCIÓN NUEVA: LOS TRES SECTORES SOBERANOS (Arquitectura e-link-u) ---
+st.divider()
+st.header("🔒 e-link-u: Triple-Sector Sovereign Architecture")
+
+# Creamos las pestañas
+t1, t2, t3 = st.tabs(["💰 Finance", "🏥 Health", "🆔 Identity"])
+
+with t1:
+    st.markdown("<h3 style='color: #28a745;'>💰 Finance Sector (Green)</h3>", unsafe_allow_html=True)
+    st.write("**C2C Offline Economy:** Simulación de pagos Card-to-Card y créditos de energía sin internet.")
+    st.info("Prioridad: Inclusión financiera rural y micro-pagos offline.")
+
+with t2:
+    st.markdown("<h3 style='color: #dc3545;'>🏥 Health Sector (Red)</h3>", unsafe_allow_html=True)
+    st.write("**Portable Medical Records:** Historial de salud cifrado y soberano para corredores TEN-T.")
+    st.info("Prioridad: Continuidad de cuidados médicos en tránsito internacional.")
+
+with t3:
+    st.markdown("<h3 style='color: #007bff;'>🆔 Identity Sector (Blue)</h3>", unsafe_allow_html=True)
+    st.write("**Self-Sovereign Identity:** Identidad legal basada en SSI y eIDAS 2.0 para cruce de fronteras.")
+    st.info("Prioridad: Soberanía de datos personales y cumplimiento con EUDI Wallet.")
+
+# --- TU DISCLAIMER AL FINAL (Como en la foto) ---
+st.divider()
+st.markdown(
+    """
+    <div style="background-color: #1e293b; padding: 20px; border-radius: 10px; border-left: 5px solid #f1c40f;">
+        <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;">⚠️ Legal Disclaimer & Sovereignty Notice</p>
+        <p style="color: white; font-size: 0.9em;">
+            The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. 
+            This simulation aligns with GDPR and the European Digital Identity (EUDI) standards. 
+            Unauthorized reproduction of this logical framework is prohibited.
+        </p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
+
 
