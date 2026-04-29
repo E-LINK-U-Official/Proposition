@@ -1,0 +1,9 @@
+@st.cache_data(ttl=3600)  # Guarda los datos por 1 hora (3600 segundos)
+def get_data():
+    try:
+        response = supabase.table("country_impact").select("*").execute()
+        return pd.DataFrame(response.data)
+    except Exception:
+        return pd.DataFrame() # Retorna tabla vacía si falla la red, evita el pantallazo rojo
+
+df = get_data()
