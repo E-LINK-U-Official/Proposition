@@ -2,7 +2,7 @@
 
 **E-Link-U** is a strategic architecture designed to eliminate administrative friction in the EU while complying with the highest regulatory standards (eIDAS 2.0 / GDPR).
 
-## 🧠 The Method (El Método)
+## 🧠 The Method 
 This is not an estimate; it is a **Comparative Infrastructure Audit**. Our architecture is documented in two foundational White Papers defining the technical and humanitarian protocols of the ecosystem:
 
 *   **White Paper 1: The Infrastructure Pilot** ([DOI: 10.5281/zenodo.19876558](https://zenodo.org))
