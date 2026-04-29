@@ -131,14 +131,6 @@ except Exception as e:
 st.sidebar.markdown("---")
 st.sidebar.subheader("Project Governance")
 st.sidebar.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
-with st.sidebar:
-    st.image("https://icons8.com", width=80)
-    st.title("Documentación")
-    st.markdown("[📄 White Paper 1](https://zenodo.org)")
-    st.markdown("[📄 White Paper 2](https://zenodo.org)")
-    st.write("---")
-    st.info("DOI: 10.5281/zenodo.19876558")
-
 st.sidebar.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org)")
 st.sidebar.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
 st.sidebar.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
