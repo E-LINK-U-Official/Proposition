@@ -56,4 +56,4 @@ E-Link-U operates on a proprietary Triple-Sector Chip logic for total data sover
 
 ---
 **Architect:** Lia Ariadna Ruiz Ben | **ORCID:** 0009-0000-8439-517X  
-*Built with Python & Supabase | © 2026 e-link-u | Patent Pending*
+*Built with Python & Supabase | © 2026 E-Link-U  | Patent Pending*
