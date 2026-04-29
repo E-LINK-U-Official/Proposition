@@ -100,7 +100,7 @@ try:
             st.markdown("### 🚄 Phase 2: EU Corridors")
             st.info("**Focus:** Cross-border Logistics\n\n**Action:** Digital Wallet integration for TEN-T rail and legal ID.")
         with r3:
-            st.markdown("### 🌐 Phase 3: Total Interoperability")
+            st.markdown("### 🌐Phase 3:Total Interoperability")
             st.info("**Focus:** Universal EU Citizenry\n\n**Action:** Full integration of tax, social security, and retail payments.")
 
         # --- FINAL SECTION: LEGAL DISCLAIMER ---
