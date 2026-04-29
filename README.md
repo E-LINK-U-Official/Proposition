@@ -7,8 +7,8 @@ This data is not an estimate; it is a **Comparative Infrastructure Audit**.
 
 The E-Link-U architecture is formally documented in two foundational White Papers that define the technical and humanitarian protocols of the ecosystem:
 
-*   **[DOI: 10.5281/zenodo.11088635](https://zenodo.org)** | White Paper 1: The Infrastructure Pilot (TEN-T Rail Resilience).
-*   **[DOI: 10.5281/zenodo.11088635](https://zenodo.org)** | White Paper 2: The Global Mission (Universal Inclusion & Umatter).
+*   **[DOI: 10.5281/zenodo.19876558)** | White Paper 1: The Infrastructure Pilot (TEN-T Rail Resilience).
+*   **[DOI: 10.5281/zenodo.19876558)** | White Paper 2: The Global Mission (Universal Inclusion & Umatter).
 
 *These documents establish the legal and technical baseline for the Triple-Sector Biometric Card and the Solar Kiosk Sneakernet.*
 
