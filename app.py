@@ -38,18 +38,6 @@ try:
         
         st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- SECCIÓN NUEVA: LOS TRES SECTORES SOBERANOS (Arquitectura e-link-u) ---
-        st.divider()
-        st.header("🔒 e-link-u: Triple-Sector Sovereign Architecture")
-        t1, t2, t3 = st.tabs(["💰 Finance (Green)", "🏥 Health (Red)", "🆔 Identity (Blue)"])
-        
-        with t1:
-            st.write("**C2C Offline Economy:** Simulación de pagos Card-to-Card y créditos de energía sin internet.")
-        with t2:
-            st.write("**Portable Medical Records:** Historial de salud cifrado y soberano para corredores TEN-T.")
-        with t3:
-            st.write("**Self-Sovereign Identity:** Identidad legal basada en SSI y eIDAS 2.0 para cruce de fronteras.")
-
         # --- SECCIÓN 3: PILARES ESTRATÉGICOS ---
         st.divider()
         st.header("🛡️ Strategic Pillars: Privacy & Implementation")
