@@ -3,17 +3,9 @@ import pandas as pd
 from supabase import create_client
 
 # 1. Page Configuration
-st.set_page_config(page_title="e-link-u Strategy Dashboard", layout="wide", page_icon="🚄")
+st.set_page_config(page_title="E-Link-U Strategy Dashboard", layout="wide", page_icon="🚄")
 
-# Custom CSS for UI styling
-st.markdown("""
-    <style>
-    .main { background-color: #0e1117; }
-    .stMetric { background-color: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #334155; }
-    </style>
-    """, unsafe_allow_html=True)
-
-st.title("📊 e-link-u: Regional Recovery Dashboard")
+st.title("📊 E-Link-U: Regional Recovery Dashboard")
 st.markdown("### Recovering the €459B Friction Gap in European Infrastructure")
 
 # 2. Secure Database Connection
@@ -22,13 +14,13 @@ try:
     key = st.secrets["SUPABASE_KEY"]
     supabase = create_client(url, key)
     
-    # 3. Data Retrieval (Impact Table)
+    # 3. Data Retrieval
     @st.cache_data(ttl=3600)
-    def fetch_impact_data():
+    def fetch_data():
         response = supabase.table("country_impact").select("*").execute()
         return pd.DataFrame(response.data)
 
-    df = fetch_impact_data()
+    df = fetch_data()
 
     if not df.empty:
         # --- SECTION 1: REGIONAL SAVINGS CALCULATOR ---
@@ -46,64 +38,63 @@ try:
         st.divider()
 
         # --- SECTION 2: VISUALIZATION ---
-        st.subheader("Comparison: Annual Loss vs. e-link-u Recovery")
+        st.subheader("Comparison: Annual Loss vs. E-Link-U Recovery")
         st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'])
         
         st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- SECTION 3: TRIPLE-SECTOR SOVEREIGN ARCHITECTURE ---
-        st.divider()
-        st.header("🔒 e-link-u: Triple-Sector Sovereign Architecture")
-        t1, t2, t3 = st.tabs(["💰 Finance (Green)", "🏥 Health (Red)", "🆔 Identity (Blue)"])
-        
-        with t1:
-            st.markdown("<h3 style='color: #28a745;'>💰 Finance Sector</h3>", unsafe_allow_html=True)
-            st.write("**C2C Offline Economy:** Offline Card-to-Card payments and energy credit synchronization without internet connectivity.")
-            st.info("Priority: Rural financial inclusion and resilient micro-transactions.")
-
-        with t2:
-            st.markdown("<h3 style='color: #dc3545;'>🏥 Health Sector</h3>", unsafe_allow_html=True)
-            st.write("**Portable Medical Records:** Encrypted and sovereign health history specifically for TEN-T transit corridors.")
-            st.info("Priority: International continuity of care for mobile workforces and travelers.")
-
-        with t3:
-            st.markdown("<h3 style='color: #007bff;'>🆔 Identity Sector</h3>", unsafe_allow_html=True)
-            st.write("**Self-Sovereign Identity (SSI):** Legal identity based on DIDs and eIDAS 2.0 standards for secure border crossing.")
-            st.info("Priority: Data sovereignty and EUDI Wallet compliance.")
-
-        # --- SECTION 4: STRATEGIC PILLARS ---
+        # --- SECTION 3: STRATEGIC PILLARS (Hybrid Resilience) ---
         st.divider()
         st.header("🛡️ Strategic Pillars: Privacy & Implementation")
+
         col_a, col_b, col_c = st.columns(3)
 
         with col_a:
             st.subheader("Zero-Knowledge Privacy")
-            st.write("e-link-u utilizes **ZKP protocols**. We verify eligibility *without* exposing private data. Sovereignty by design.")
+            st.write("E-Link-U uses **ZKP protocols**. We verify eligibility *without* exposing private data. Sovereignty by design.")
 
         with col_b:
             st.subheader("Instant ROI")
-            st.write("With a projected recovery of **€459B/year**, infrastructure implementation costs are recovered within the first fiscal month.")
+            st.write("With a projected recovery of **€459B/year**, implementation costs are recovered within the first 30 days.")
 
         with col_c:
-            st.subheader("Hybrid Access")
-            st.write("Inclusion first: **Physical Cards** for rural seniors and **Digital Wallets** for the high-frequency mobile workforce.")
+            st.subheader("Hybrid Access & Resilience")
+            st.write("A fail-safe ecosystem: **Digital Interface** for daily convenience and **Biometric Physical Cards** for blackouts, cyber-attacks, or zero-battery scenarios.")
 
-        # --- SECTION 5: IMPLEMENTATION ROADMAP ---
+        # --- SECTION 4: ROADMAP (Hybrid Approach) ---
         st.divider()
-        st.header("🗺️ Implementation Roadmap")
+        st.header("🗺️ Implementation Roadmap (Hoja de Ruta)")
+        
         r1, r2, r3 = st.columns(3)
         
         with r1:
             st.markdown("### 📍 Phase 1: Rural Pilot")
-            st.info("**Focus:** Seniors & Rural Regions\n\n**Action:** Smart Physical Cards with ZKP pre-validation.")
+            st.info("**Focus:** Seniors & Low-Connectivity Regions\n\n**Action:** Smart Physical Cards as the primary sovereign tool.")
+            
         with r2:
             st.markdown("### 🚄 Phase 2: EU Corridors")
-            st.info("**Focus:** Cross-border Logistics\n\n**Action:** Digital Wallet integration for TEN-T rail and legal ID.")
+            st.info("**Focus:** Mobile Workforce & Travelers\n\n**Action:** Hybrid deployment (Digital + Physical Card) for uninterrupted cross-border rail identity.")
+            
         with r3:
-            st.markdown("### 🌐Phase 3:Total Interoperability")
-            st.info("**Focus:** Universal EU Citizenry\n\n**Action:** Full integration of tax, social security, and retail payments.")
+            st.markdown("### 🌐 Phase 3: Total Interop")
+            st.info("**Focus:** Universal EU Citizenry\n\n**Action:** Full integration with the Physical Card acting as the permanent offline 'Anchor'.")
 
-        # --- FINAL SECTION: LEGAL DISCLAIMER ---
+        # --- THE TRIPLE SECTOR SECTIONS ---
+        st.divider()
+        st.header("🔒 e-link-u: Triple-Sector Sovereign Architecture")
+        t1, t2, t3 = st.tabs(["💰 Finance", "🏥 Health", "🆔 Identity"])
+        
+        with t1:
+            st.markdown("<h3 style='color: #28a745;'>💰 Finance Sector (Green)</h3>", unsafe_allow_html=True)
+            st.write("Offline C2C Economy. The Physical Card ensures trade continues during power outages or bank hacks.")
+        with t2:
+            st.markdown("<h3 style='color: #dc3545;'>🏥 Health Sector (Red)</h3>", unsafe_allow_html=True)
+            st.write("Critical health data accessible via Card during emergencies in tunnels or remote areas with no signal.")
+        with t3:
+            st.markdown("<h3 style='color: #007bff;'>🆔 Identity Sector (Blue)</h3>", unsafe_allow_html=True)
+            st.write("Self-Sovereign Identity. The card serves as the offline Master-Key for border security.")
+
+        # --- LEGAL DISCLAIMER ---
         st.divider()
         st.markdown(
             """
@@ -111,8 +102,7 @@ try:
                 <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;">⚠️ Legal Disclaimer & Sovereignty Notice</p>
                 <p style="color: white; font-size: 0.9em;">
                     The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. 
-                    This framework is architected to align with GDPR and European Digital Identity (EUDI) standards. 
-                    Unauthorized commercial reproduction of this logical framework is strictly prohibited.
+                    This hybrid framework aligns with GDPR and European Digital Identity (EUDI) standards. 
                 </p>
             </div>
             """, 
@@ -120,12 +110,12 @@ try:
         )
 
     else:
-        st.warning("Awaiting database synchronization...")
+        st.warning("Awaiting database sync...")
 
 except Exception as e:
     st.error(f"System connection status: {e}")
 
-# --- SIDEBAR: OFFICIAL GOVERNANCE ---
+# --- SIDEBAR ---
 st.sidebar.markdown("---")
 st.sidebar.subheader("Project Governance")
 st.sidebar.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
