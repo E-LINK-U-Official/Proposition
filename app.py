@@ -23,6 +23,7 @@ try:
     df = fetch_data()
 
     if not df.empty:
+        
         # --- SECTION 1: REGIONAL SAVINGS CALCULATOR ---
         st.header("🎯 Regional Savings Calculator")
         col1, col2 = st.columns(2)
@@ -93,6 +94,17 @@ try:
         with t3:
             st.markdown("<h3 style='color: #007bff;'>🆔 Identity Sector (Blue)</h3>", unsafe_allow_html=True)
             st.write("Self-Sovereign Identity. The card serves as the offline Master-Key for border security.")
+            import pandas as pd
+
+# Datos del Benchmark
+df_friccion = pd.DataFrame({
+    'Región': ['Japón (Suica)', 'Unión Europea'],
+    'Coste de Fricción (€)': [50, 1020]
+})
+
+st.write("### Visualización del 'Impuesto de Ineficiencia'")
+st.bar_chart(data=df_friccion, x='Región', y='Coste de Fricción (€)', color="#2e7d32")
+
 
         # --- LEGAL DISCLAIMER ---
         st.divider()
@@ -119,6 +131,14 @@ except Exception as e:
 st.sidebar.markdown("---")
 st.sidebar.subheader("Project Governance")
 st.sidebar.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
+with st.sidebar:
+    st.image("https://icons8.com", width=80)
+    st.title("Documentación")
+    st.markdown("[📄 White Paper 1](https://zenodo.org)")
+    st.markdown("[📄 White Paper 2](https://zenodo.org)")
+    st.write("---")
+    st.info("DOI: 10.5281/zenodo.19876558")
+
 st.sidebar.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org)")
 st.sidebar.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
 st.sidebar.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
