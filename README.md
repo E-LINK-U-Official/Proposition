@@ -64,7 +64,7 @@ Achieve the **€459B annual recovery target** across the 27 EU member states.
 
 
 ---
-# 🇪🇺 E-Link-U: Deteniendo la Hemorragia Administrativa de 459.000 M€
+# 🇪🇺 E-Link-U: Deteniendo la Hemorragia Administrativa de 459 M€
 
 **E-Link-U** es un marco estratégico diseñado para eliminar la fricción administrativa en la UE, cumpliendo con los más altos estándares regulatorios (eIDAS 2.0 / RGPD).
 
