@@ -6,11 +6,10 @@
 This data is not an estimate; it is a **Comparative Infrastructure Audit**.
 
 The E-Link-U architecture is formally documented in two foundational White Papers that define the technical and humanitarian protocols of the ecosystem:
-  **Digital Object Identifier (DOI): [ 10.5281/zenodo.19876558](https://zenodo.org)** | White Paper** | WHITE PAPER 1: THE INFRASTRUCTURE PILOT.
-**Digital Object Identifier (DOI): [ 10.5281/zenodo.19876558](https://zenodo.org)**  WHITE PAPER 2: THE GLOBAL MISSION
 
-*      *
-*   **[DOI: 10.5281/zenodo.19876558](https://zenodo.org)** | White Paper 2:
+  **Digital Object Identifier (DOI): [ 10.5281/zenodo.19876558](https://zenodo.org)**| WHITE PAPER 1: THE INFRASTRUCTURE PILOT
+  **Digital Object Identifier (DOI): [ 10.5281/zenodo.19876558](https://zenodo.org)**| WHITE PAPER 2: THE GLOBAL MISSION
+
 
 *These documents establish the legal and technical baseline for the Triple-Sector Biometric Card and the Solar Kiosk Sneakernet.*
 
