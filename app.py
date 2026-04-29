@@ -96,3 +96,13 @@ st.sidebar.write("🆔 **ORCID:** [0009-0000-8439-517X](https://orcid.org)")
 st.sidebar.write("🔗 **DOI:** [10.5281/zenodo.11088635](https://zenodo.org)")
 st.sidebar.info("e-link-u OÜ (Estonia) | Proprietary Architecture")
 st.sidebar.caption("© 2026 e-link-u | Built for TEN-T & Global Inclusion | Patent Pending")
+# Esto oculta los errores técnicos feos y muestra un mensaje profesional
+import streamlit as st
+
+def handle_error():
+    st.error("🔄 El sistema está sincronizando datos con el ecosistema e-link-u. Por favor, espera un momento.")
+    st.stop()
+
+if df.empty:
+    handle_error()
+
