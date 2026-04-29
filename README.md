@@ -55,5 +55,5 @@ E-Link-U operates on a proprietary Triple-Sector Chip logic for total data sover
 *   **Goal:** Achieve the **€459B** annual recovery target across the 27 EU member states.
 
 ---
-**Architect:** Lia Ariadna Ruiz Ben | **ORCID:** 0009-0000-8439-517X  
+**Architect:** Lia Ariadna Ruiz Ben | **ORCID:** 0009-0006-2598-0625 
 *Built with Python & Supabase | © 2026 E-Link-U  | Patent Pending| Licensed under CC BY-NC-ND 4.0 *
