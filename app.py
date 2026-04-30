@@ -25,17 +25,14 @@ with st.sidebar:
     with st.sidebar:
     st.divider()
     
-    # --- SECCIÓN DE FINANCIACIÓN PAYPAL ---
+  # Configuración de PayPal
     titulo_pago = "Project Funding" if lang == "English" else "Financiación"
-    # CAMBIA 'TU_USUARIO' por tu usuario real de PayPal.me (ej. LiaRuiz)
+    # IMPORTANTE: Reemplaza 'LiaRuiz' con tu usuario real de PayPal.me
     mi_paypal = "https://paypal.me/LiaRB" 
     
     st.markdown(
         f"""
-        <a href="https://paypal.com
-
-
-{mi_paypal}" target="_blank" style="text-decoration: none;">
+        <a href="https://paypal.com{mi_paypal}" target="_blank" style="text-decoration: none;">
             <div style="background-color: #0070ba; color: white; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; font-size: 14px;">
                 { 'Contribute via PayPal' if lang == 'English' else 'Contribuir vía PayPal' }
             </div>
