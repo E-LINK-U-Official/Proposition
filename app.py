@@ -17,14 +17,14 @@ with st.sidebar:
     
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
-    st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625")
-    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](//doi.org/10.5281/zenodo.19876558))")
+    st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625)")
+    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](//doi.org/10.5281/zenodo.19876558)")
     
     st.divider()
     
     # Botón de PayPal
     # REEMPLAZA 'LiaRuiz' por tu usuario real de PayPal.me
-    mi_paypal = "https://paypal.me/LiaRB" 
+    mi_paypal = "https://paypal.me/LiaRB or @LiaRB" 
     
     st.markdown(
         f"""
