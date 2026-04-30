@@ -22,10 +22,6 @@ with st.sidebar:
     
     st.divider()
     
-    st.sidebar.write("---")
-st.sidebar.markdown(f"### 💸 [Support Project / Apoyar Proyecto](https://paypal.me/LiaRB)")
-st.sidebar.caption("Funding for 2025 Audit expansion.")
-
     # Fuentes y Metodología
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
