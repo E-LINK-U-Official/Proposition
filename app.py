@@ -22,6 +22,36 @@ with st.sidebar:
     st.divider()
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
+    with st.sidebar:
+    st.divider()
+    # Título profesional para la contribución
+    st.markdown(f"**{ 'Project Funding' if lang == 'English' else 'Financiación del Proyecto' }**")
+    st.caption("Support the expansion of the 2025 Audit and the Rural Pilot infrastructure.")
+    
+    # Botón de PayPal estilizado
+   with st.sidebar:
+    st.divider()
+    # Título profesional
+    titulo_pago = "Project Funding" if lang == "English" else "Financiación del Proyecto"
+    desc_pago = "Support the 2025 Audit expansion." if lang == "English" else "Apoya la expansión de la Auditoría 2025."
+    
+    st.markdown(f"**{titulo_pago}**")
+    st.caption(desc_pago)
+    
+    mi_usuario_paypal = "https://paypal.me/LiaRB" 
+    
+    st.markdown(
+        f"""
+        <a href="https://paypal.com{mi_usuario_paypal}" target="_blank" style="text-decoration: none;">
+            <div style="background-color: #0070ba; color: white; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold;">
+                { 'Contribute via PayPal' if lang == 'English' else 'Contribuir vía PayPal' }
+            </div>
+        </a>
+        """, 
+        unsafe_allow_html=True
+    )
+
+
     # Enlaces a fuentes oficiales 2025 corregidos
     st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)]")
     st.caption("• [EC Single Market Report 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
