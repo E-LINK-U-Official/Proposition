@@ -1,3 +1,4 @@
 git add app.py
 git commit -m "feat: implement dual-language support, visual triple-sector chip architecture, and enhanced friction benchmarks"
+git commit -m "feat: complete 2025 hybrid dashboard with verifiable sources, bilingual support, and academic identifiers"
 git push origin main
