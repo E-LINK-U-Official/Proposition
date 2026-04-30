@@ -31,6 +31,9 @@ with st.sidebar:
     # Botón de PayPal estilizado
    with st.sidebar:
     st.divider()
+    
+with st.sidebar:
+    st.divider()
     # Título profesional
     titulo_pago = "Project Funding" if lang == "English" else "Financiación del Proyecto"
     desc_pago = "Support the 2025 Audit expansion." if lang == "English" else "Apoya la expansión de la Auditoría 2025."
@@ -38,6 +41,8 @@ with st.sidebar:
     st.markdown(f"**{titulo_pago}**")
     st.caption(desc_pago)
     
+    # REEMPLAZA 'TU_NOMBRE_DE_USUARIO' con tu usuario real de PayPal.me
+    # Ejemplo: si es paypal.me/LiaRuiz, pon LiaRuiz
     mi_usuario_paypal = "https://paypal.me/LiaRB" 
     
     st.markdown(
@@ -50,7 +55,6 @@ with st.sidebar:
         """, 
         unsafe_allow_html=True
     )
-
 
     # Enlaces a fuentes oficiales 2025 corregidos
     st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)]")
