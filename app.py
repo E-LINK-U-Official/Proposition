@@ -177,7 +177,7 @@ try:
             <div style="text-align: center; background-color: #0e1117; padding: 30px; border-radius: 15px; border: 1px solid #28a745;">
                 <h3>{ 'Ready to eliminate administrative friction?' if lang == 'English' else '¿Listo para eliminar la fricción administrativa?' }</h3>
                 <p>{ 'Available for remote consulting and technical leadership.' if lang == 'English' else 'Disponible para consultoría remota y liderazgo técnico.' }</p>
-                <a href="mailto:tu-email@://dominio.com{email_subject}&body={email_body}" style="text-decoration: none;">
+                <a href="mailto:lia@elinku.org{email_subject}&body={email_body}" style="text-decoration: none;">
                     <div style="background-color: #28a745; color: white; padding: 15px 30px; border-radius: 8px; font-weight: bold; display: inline-block;">
                         📩 { 'Contact for Partnership / Hire' if lang == 'English' else 'Contactar para Alianzas / Contratación' }
                     </div>
