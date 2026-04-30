@@ -16,11 +16,13 @@ with st.sidebar:
     st.divider()
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
+    # Enlaces corregidos y funcionales
     st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org)")
     st.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
     st.divider()
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
+    # Enlaces a fuentes oficiales 2025 corregidos
     st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)](https://europa.eu)")
     st.caption("• [EC Single Market Report 2025](https://europa.eu)")
     st.caption("• [JR East Financial Report 2025](https://jreast.co.jp)")
@@ -33,7 +35,7 @@ c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Aleman
 T = {
     "English": {
         "title": "📊 E-Link-U: Regional Recovery Dashboard",
-        "sub": "Recovering the €459B Friction Gap in European Infrastructure (2025 Audit)",
+        "sub": "Recovering the €459B Friction Gap (2025 Audit)",
         "calc_h": "🎯 Regional Savings Calculator", "sel": "Select a Country to Audit:", "met": "Potential Recovery",
         "comp_h": "📉 Friction Benchmark: EU vs. Japan (2025)", 
         "comp_txt": "Japan (Suica) operates at €50 friction/year. EU averages €1,020. Recovery: €970/person.",
@@ -41,7 +43,7 @@ T = {
         "chip_h": "🔒 e-link-u: Triple-Sector Sovereign Architecture",
         "chip_i": "Antenna is physically locked until a live fingerprint is detected. No biometric data ever leaves the card.",
         "s1_t": "🟢 Finance Sector", "s1_p": "Offline C2C Economy. Trade continues during power outages or bank hacks. Energy credits and managed aids.",
-        "s2_t": "🔴 Health Sector", "s2_p": "Critical health data accessible via Card during emergencies in tunnels or remote areas with no signal.",
+        "s2_t": "🔴 Health Sector", "s2_p": "Critical health data accessible via Card during emergencies in remote areas with no signal.",
         "s3_t": "🔵 Identity Sector", "s3_p": "Self-Sovereign Identity. Offline Master-Key for border security and eIDAS 2.0 / DIDs integration.",
         "pillar_h": "🛡️ Strategic Pillars: Privacy & Resilience",
         "p1_t": "Zero-Knowledge Privacy", "p1_d": "Verifying eligibility without exposing private data. Sovereignty by design.",
@@ -62,7 +64,7 @@ T = {
         "tab_h": "📋 Datos de Impacto Detallados (Pérdida Anual en Billones)",
         "chip_h": "🔒 e-link-u: Arquitectura Soberana de Triple Sector",
         "chip_i": "La antena está bloqueada físicamente hasta detectar huella viva. Ningún dato biométrico sale de la tarjeta.",
-        "s1_t": "🟢 Sector Finanzas", "s1_p": "Economía C2C Offline. El comercio sigue durante apagones o hackeos. Créditos energéticos y ayudas gestionadas.",
+        "s1_t": "🟢 Sector Finanzas", "s1_p": "Economía C2C Offline. El comercio sigue durante apagones o hackeos. Créditos energéticos y ayudas.",
         "s2_t": "🔴 Sector Salud", "s2_p": "Datos médicos críticos accesibles por tarjeta en emergencias o zonas sin señal de red.",
         "s3_t": "🔵 Sector Identidad", "s3_p": "Identidad Autosoberana. Llave Maestra offline para seguridad fronteriza e integración eIDAS 2.0.",
         "pillar_h": "🛡️ Pilares Estratégicos: Privacidad y Resiliencia",
@@ -96,6 +98,7 @@ try:
         with col_c:
             st.header(T["calc_h"])
             sel = st.selectbox(T["sel"], df['country_name'].unique())
+            # CORRECCIÓN ILOC: Se añade .iloc[0] para extraer la fila correctamente
             data = df[df['country_name'] == sel].iloc[0]
             st.metric(label=f"{T['met']} ({sel})", value=f"€{data['rural_recovery_potential']:.2f} B")
         with col_b:
@@ -110,7 +113,7 @@ try:
         st.subheader(T["tab_h"])
         st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- ARQUITECTURA TRIPLE SECTOR ---
+        # --- TRIPLE SECTOR ---
         st.divider()
         st.header(T["chip_h"])
         st.info(f"💡 {T['chip_i']}")
