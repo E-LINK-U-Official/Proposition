@@ -23,9 +23,9 @@ with st.sidebar:
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
     # Enlaces a fuentes oficiales 2025 corregidos
-    st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)](https://europa.eu)")
-    st.caption("• [EC Single Market Report 2025](https://europa.eu)")
-    st.caption("• [JR East Financial Report 2025](https://jreast.co.jp)")
+    st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260331-2#:~:text=%C2%A9%20A_stockphoto/Shutterstock.com,%25)%20and%20Slovakia%20(28.6%25).)")
+    st.caption("• [EC Single Market Report 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
+    st.caption("• [JR East Financial Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
     st.divider()
     st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
     st.caption("© 2026 E-Link-U | Patent Pending | CC BY-NC-ND 4.0")
