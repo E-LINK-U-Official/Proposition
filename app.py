@@ -5,7 +5,7 @@ from supabase import create_client
 # 1. Configuración de página
 st.set_page_config(page_title="E-Link-U Strategy Dashboard", layout="wide", page_icon="🚄")
 
-# Estilos visuales para los Sectores del Chip
+# Estilos visuales
 st.markdown("""
     <style>
     .sector-card {
@@ -21,59 +21,47 @@ with st.sidebar:
     lang = st.radio("Select Interface Language:", ("English", "Español"), index=0)
     st.divider()
 
-# Diccionario Maestro (Híbrido Total 2025)
+# Diccionario Maestro 2025
 text = {
     "English": {
         "title": "📊 E-Link-U: Regional Recovery Dashboard",
-        "subtitle": "Recovering the €459B Friction Gap in European Infrastructure (2025 Data)",
+        "subtitle": "Recovering the €459B Friction Gap (2025 Audit Data)",
         "calc_h": "🎯 Regional Savings Calculator",
         "select": "Select a Country to Audit:",
         "metric_l": "Potential Recovery",
         "comp_h": "📉 Friction Benchmark: EU vs. Japan (2025)",
-        "comp_txt": "Japan (Suica) operates at €50 friction/year, while the EU averages €1,020. E-Link-U recovers that €970 gap.",
-        "table_h": "📋 Detailed Impact Data (Annual Loss in Billions)",
+        "comp_txt": "Japan (Suica) operates at €50 friction/year. EU averages €1,020. Recovery: €970/person.",
         "chip_h": "🔒 e-link-u: Triple-Sector Sovereign Architecture",
-        "chip_info": "Antenna is physically locked until a live fingerprint is detected. No biometric data ever leaves the card.",
-        "s1_t": "🟢 Finance (Green)", "s1_p": "Offline C2C Economy. Trade continues during power outages or bank hacks.",
-        "s2_t": "🔴 Health (Red)", "s2_p": "Critical health data accessible via Card during emergencies or remote areas.",
-        "s3_t": "🔵 Identity (Blue)", "s3_p": "Self-Sovereign Identity. Offline Master-Key for border security & eIDAS 2.0.",
-        "pillar_h": "🛡️ Strategic Pillars: Privacy & Resilience",
-        "p1_t": "Zero-Knowledge Privacy", "p1_d": "Verifying eligibility without exposing private data. Sovereignty by design.",
-        "p2_t": "Instant ROI", "p2_d": "Projected recovery of €459B/year. Costs recovered in 30 days.",
-        "p3_t": "Hybrid Resilience", "p3_d": "Digital Interface + Biometric Physical Cards for blackouts or zero-battery.",
+        "chip_info": "Antenna is physically locked until a live fingerprint is detected.",
+        "s1_t": "🟢 Finance", "s1_p": "Offline C2C Economy. Trade continues during outages.",
+        "s2_t": "🔴 Health", "s2_p": "Critical medical history accessible via Card offline.",
+        "s3_t": "🔵 Identity", "s3_p": "SSI Master-Key for eIDAS 2.0 / DIDs.",
         "roadmap_h": "🗺️ Implementation Roadmap",
-        "r1_t": "📍 Phase 1: Rural Pilot", "r1_d": "Focus: Seniors & Low-Connectivity. Smart Physical Cards as primary tool.",
-        "r2_t": "🚄 Phase 2: EU Corridors", "r2_d": "Focus: Mobile Workforce. Hybrid deployment for cross-border rail identity.",
-        "r3_t": "🌐 Phase 3: Total Interop", "r3_d": "Focus: Universal EU Citizenry. Card as permanent offline 'Anchor'.",
-        "legal_h": "⚠️ Legal Disclaimer & Sovereignty Notice",
-        "legal_d": "The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. Conforms to GDPR and EUDI standards.",
-        "meth": "Data Methodology (2025)"
+        "r1_t": "📍 Phase 1: Rural", "r1_d": "Smart Cards for low-connectivity areas.",
+        "r2_t": "🚄 Phase 2: Corridors", "r2_d": "Hybrid deployment for Madrid-Paris-Berlin.",
+        "r3_t": "🌐 Phase 3: Universal", "r3_d": "Total EU integration and €459B recovery.",
+        "legal": "⚠️ Legal: Proprietary assets of Lia Ariadna Ruiz Ben. GDPR/EUDI.",
+        "meth": "Data Methodology (2025 Sources)"
     },
     "Español": {
         "title": "📊 E-Link-U: Panel de Recuperación Regional",
-        "subtitle": "Recuperando los 459.000 M€ de brecha de fricción europea (Datos 2025)",
+        "subtitle": "Recuperando los 459.000 M€ de fricción (Auditoría 2025)",
         "calc_h": "🎯 Calculadora de Ahorro Regional",
         "select": "Seleccione un país para auditar:",
         "metric_l": "Recuperación Potencial",
         "comp_h": "📉 Benchmark de Fricción: UE vs. Japón (2025)",
-        "comp_txt": "Japón opera con 50€ de fricción/año; la UE promedia 1.020€. E-Link-U recupera esos 970€ de diferencia.",
-        "table_h": "📋 Datos de Impacto Detallados (Pérdida Anual en Billones)",
+        "comp_txt": "Japón opera con 50€/año; la UE con 1.020€. E-Link-U recupera esos 970€/persona.",
         "chip_h": "🔒 e-link-u: Arquitectura Soberana de Triple Sector",
-        "chip_info": "La antena está bloqueada físicamente hasta detectar huella viva. Ningún dato biométrico sale de la tarjeta.",
-        "s1_t": "🟢 Finanzas (Verde)", "s1_p": "Economía C2C Offline. El comercio sigue durante apagones o hackeos.",
-        "s2_t": "🔴 Salud (Rojo)", "s2_p": "Datos médicos accesibles por tarjeta en emergencias o zonas sin señal.",
-        "s3_t": "🔵 Identidad (Azul)", "s3_p": "Identidad Autosoberana. Llave Maestra offline para eIDAS 2.0.",
-        "pillar_h": "🛡️ Pilares Estratégicos: Privacidad y Resiliencia",
-        "p1_t": "Privacidad Zero-Knowledge", "p1_d": "Verificación sin exponer datos privados. Soberanía ZKP.",
-        "p2_t": "ROI Instantáneo", "p2_d": "Recuperación de 459B€/año. Costes amortizados en 30 días.",
-        "p3_t": "Resiliencia Híbrida", "p3_d": "Interfaz Digital + Tarjeta Física para apagones o ataques cibernéticos.",
+        "chip_info": "La antena NFC está bloqueada físicamente hasta detectar huella viva.",
+        "s1_t": "🟢 Finanzas", "s1_p": "Economía C2C Offline. Comercio sin interrupciones.",
+        "s2_t": "🔴 Salud", "s2_p": "Historial médico portátil para emergencias offline.",
+        "s3_t": "🔵 Identidad", "s3_p": "Llave Maestra SSI para eIDAS 2.0 / DIDs.",
         "roadmap_h": "🗺️ Hoja de Ruta de Implementación",
-        "r1_t": "📍 Fase 1: Piloto Rural", "r1_d": "Foco: Mayores y Baja Conectividad. Tarjeta Física como herramienta primaria.",
-        "r2_t": "🚄 Fase 2: Corredores UE", "r2_d": "Foco: Trabajadores Móviles. Despliegue híbrido para trenes fronterizos.",
-        "r3_t": "🌐 Fase 3: Interop Total", "r3_d": "Foco: Ciudadanía Universal UE. La tarjeta como 'Ancla' offline.",
-        "legal_h": "⚠️ Aviso Legal y de Soberanía",
-        "legal_d": "La arquitectura e-link-u y el protocolo Umatter son activos propietarios de Lia Ariadna Ruiz Ben. Conforme a RGPD/EUDI.",
-        "meth": "Metodología de Datos (2025)"
+        "r1_t": "📍 Fase 1: Rural", "r1_d": "Tarjetas inteligentes para zonas de baja conectividad.",
+        "r2_t": "🚄 Fase 2: Corredores", "r2_d": "Despliegue híbrido para Madrid-París-Berlín.",
+        "r3_t": "🌐 Fase 3: Universal", "r3_d": "Integración total UE y recuperación de 459B€.",
+        "legal": "⚠️ Aviso Legal: Activos de Lia Ariadna Ruiz Ben. RGPD/EUDI.",
+        "meth": "Metodología de Datos (Fuentes 2025)"
     }
 }[lang]
 
@@ -96,13 +84,13 @@ try:
 
         # --- CALCULADORA Y BENCHMARK ---
         st.header(text["calc_h"])
-        col_calc, col_bench = st.columns(2)
-        with col_calc:
+        c_calc, c_bench = st.columns(2)
+        with c_calc:
             country_selected = st.selectbox(text["select"], df['country_name'].unique())
             country_data = df[df['country_name'] == country_selected].iloc[0]
             st.metric(label=f"{text['metric_l']} ({country_selected})", 
                       value=f"€{country_data['rural_recovery_potential']:.2f} B")
-        with col_bench:
+        with c_bench:
             st.subheader(text["comp_h"])
             st.write(text["comp_txt"])
             st.progress(5/100, text="Japan (Suica): €50")
@@ -110,9 +98,6 @@ try:
 
         st.divider()
         st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
-
-        # --- TABLA CON DEGRADADO REDS ---
-        st.subheader(text["table_h"])
         st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
         # --- CHIP VISUAL ---
@@ -127,44 +112,24 @@ try:
         with c3:
             st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3 style="color: #007bff;">{text["s3_t"]}</h3><p>{text["s3_p"]}</p></div>', unsafe_allow_html=True)
 
-        # --- PILARES ESTRATÉGICOS ---
-        st.divider()
-        st.header(text["pillar_h"])
-        pa, pb, pc = st.columns(3)
-        with pa:
-            st.subheader(text["p1_t"]); st.write(text["p1_d"])
-        with pb:
-            st.subheader(text["p2_t"]); st.write(text["p2_d"])
-        with pc:
-            st.subheader(text["p3_t"]); st.write(text["p3_d"])
-
         # --- ROADMAP ---
         st.divider()
         st.header(text["roadmap_h"])
         r1, r2, r3 = st.columns(3)
-        with r1:
-            st.info(f"### {text['r1_t']}\n\n{text['r1_d']}")
-        with r2:
-            st.info(f"### {text['r2_t']}\n\n{text['r2_d']}")
-        with r3:
-            st.info(f"### {text['r3_t']}\n\n{text['r3_d']}")
+        with r1: st.info(f"### {text['r1_t']}\n\n{text['r1_d']}")
+        with r2: st.info(f"### {text['r2_t']}\n\n{text['r2_d']}")
+        with r3: st.info(f"### {text['r3_t']}\n\n{text['r3_d']}")
 
-        # --- AVISO LEGAL ---
         st.divider()
-        st.markdown(f"""
-            <div style="background-color: #1e293b; padding: 20px; border-radius: 10px; border-left: 5px solid #f1c40f;">
-                <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;">{text['legal_h']}</p>
-                <p style="color: white; font-size: 0.9em;">{text['legal_d']}</p>
-            </div>
-            """, unsafe_allow_html=True)
+        st.warning(text["legal"])
 
     else:
         st.warning("Awaiting database sync...")
 
 except Exception as e:
-    st.error(f"System connection status: {e}")
+    st.error(f"Connection status: {e}")
 
-# SIDEBAR GOVERNANCE
+# SIDEBAR (FUENTES Y GOBERNANZA)
 with st.sidebar:
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
@@ -172,8 +137,9 @@ with st.sidebar:
     st.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
     st.divider()
     st.markdown(f"**{text['meth']}**")
-    st.caption("• EU Cost Basis: Eurostat 2025")
-    st.caption("• Efficiency Basis: JR East 2025")
+    st.caption("• [Eurostat 2025 - Labor Costs](https://europa.eu)")
+    st.caption("• [EC Single Market Report 2024/25](https://europa.eu)")
+    st.caption("• [JR East Financial Report 2025](https://jreast.co.jp)")
     st.divider()
-    st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
+    st.info("E-Link-U OÜ (Estonia)")
     st.caption("© 2026 E-Link-U | Patent Pending | Licensed under CC BY-NC-ND 4.0")
