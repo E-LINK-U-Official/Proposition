@@ -21,15 +21,15 @@ with st.sidebar:
     lang = st.radio("Select Interface Language:", ("English", "Español"), index=0)
     st.divider()
 
-# Diccionario Maestro (Híbrido Total y Definitivo)
+# Diccionario Maestro (Híbrido Total 2025)
 text = {
     "English": {
         "title": "📊 E-Link-U: Regional Recovery Dashboard",
-        "subtitle": "Recovering the €459B Friction Gap in European Infrastructure",
+        "subtitle": "Recovering the €459B Friction Gap in European Infrastructure (2025 Data)",
         "calc_h": "🎯 Regional Savings Calculator",
         "select": "Select a Country to Audit:",
         "metric_l": "Potential Recovery",
-        "comp_h": "📉 Friction Benchmark: EU vs. Japan",
+        "comp_h": "📉 Friction Benchmark: EU vs. Japan (2025)",
         "comp_txt": "Japan (Suica) operates at €50 friction/year, while the EU averages €1,020. E-Link-U recovers that €970 gap.",
         "table_h": "📋 Detailed Impact Data (Annual Loss in Billions)",
         "chip_h": "🔒 e-link-u: Triple-Sector Sovereign Architecture",
@@ -46,19 +46,20 @@ text = {
         "r2_t": "🚄 Phase 2: EU Corridors", "r2_d": "Focus: Mobile Workforce. Hybrid deployment for cross-border rail identity.",
         "r3_t": "🌐 Phase 3: Total Interop", "r3_d": "Focus: Universal EU Citizenry. Card as permanent offline 'Anchor'.",
         "legal_h": "⚠️ Legal Disclaimer & Sovereignty Notice",
-        "legal_d": "The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. Conforms to GDPR and EUDI standards."
+        "legal_d": "The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. Conforms to GDPR and EUDI standards.",
+        "meth": "Data Methodology (2025)"
     },
     "Español": {
         "title": "📊 E-Link-U: Panel de Recuperación Regional",
-        "subtitle": "Recuperando los 459.000 M€ de brecha de fricción europea",
+        "subtitle": "Recuperando los 459.000 M€ de brecha de fricción europea (Datos 2025)",
         "calc_h": "🎯 Calculadora de Ahorro Regional",
         "select": "Seleccione un país para auditar:",
         "metric_l": "Recuperación Potencial",
-        "comp_h": "📉 Benchmark de Fricción: UE vs. Japón",
+        "comp_h": "📉 Benchmark de Fricción: UE vs. Japón (2025)",
         "comp_txt": "Japón opera con 50€ de fricción/año; la UE promedia 1.020€. E-Link-U recupera esos 970€ de diferencia.",
         "table_h": "📋 Datos de Impacto Detallados (Pérdida Anual en Billones)",
         "chip_h": "🔒 e-link-u: Arquitectura Soberana de Triple Sector",
-        "chip_info": "Antenna bloqueada físicamente hasta detectar huella viva. Ningún dato biométrico sale de la tarjeta.",
+        "chip_info": "La antena está bloqueada físicamente hasta detectar huella viva. Ningún dato biométrico sale de la tarjeta.",
         "s1_t": "🟢 Finanzas (Verde)", "s1_p": "Economía C2C Offline. El comercio sigue durante apagones o hackeos.",
         "s2_t": "🔴 Salud (Rojo)", "s2_p": "Datos médicos accesibles por tarjeta en emergencias o zonas sin señal.",
         "s3_t": "🔵 Identidad (Azul)", "s3_p": "Identidad Autosoberana. Llave Maestra offline para eIDAS 2.0.",
@@ -71,7 +72,8 @@ text = {
         "r2_t": "🚄 Fase 2: Corredores UE", "r2_d": "Foco: Trabajadores Móviles. Despliegue híbrido para trenes fronterizos.",
         "r3_t": "🌐 Fase 3: Interop Total", "r3_d": "Foco: Ciudadanía Universal UE. La tarjeta como 'Ancla' offline.",
         "legal_h": "⚠️ Aviso Legal y de Soberanía",
-        "legal_d": "La arquitectura e-link-u y el protocolo Umatter son activos propietarios de Lia Ariadna Ruiz Ben. Conforme a RGPD/EUDI."
+        "legal_d": "La arquitectura e-link-u y el protocolo Umatter son activos propietarios de Lia Ariadna Ruiz Ben. Conforme a RGPD/EUDI.",
+        "meth": "Metodología de Datos (2025)"
     }
 }[lang]
 
@@ -162,12 +164,16 @@ try:
 except Exception as e:
     st.error(f"System connection status: {e}")
 
-# SIDEBAR (RESTAURADO COMPLETO)
+# SIDEBAR GOVERNANCE
 with st.sidebar:
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
     st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org)")
     st.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
+    st.divider()
+    st.markdown(f"**{text['meth']}**")
+    st.caption("• EU Cost Basis: Eurostat 2025")
+    st.caption("• Efficiency Basis: JR East 2025")
     st.divider()
     st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
     st.caption("© 2026 E-Link-U | Patent Pending | Licensed under CC BY-NC-ND 4.0")
