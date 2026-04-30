@@ -23,7 +23,7 @@ with st.sidebar:
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
     # Enlaces a fuentes oficiales 2025 corregidos
-    st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)]
+    st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)]")
     st.caption("• [EC Single Market Report 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
     st.caption("• [JR East Financial Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
     st.divider()
