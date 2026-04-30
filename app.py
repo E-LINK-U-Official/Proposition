@@ -14,27 +14,41 @@ with st.sidebar:
     st.title("🌐 Menu")
     lang = st.radio("Language / Idioma", ("English", "Español"), horizontal=True)
     st.divider()
+    
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
-    # Enlaces corregidos y funcionales
-    st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625)")
-    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](//doi.org/10.5281/zenodo.19876558)")
-    st.divider()
-    m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
-    st.markdown(f"**{m_t}**")
-    with st.sidebar:
+    st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625")
+    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](//doi.org/10.5281/zenodo.19876558))")
+    
     st.divider()
     
-
-    # Enlaces a fuentes oficiales 2025 corregidos
-    st.caption("• [Eurostat 2025 Labor Costs (€34.9/h)]")
-    st.caption("• [EC Single Market Report 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
-    st.caption("• [JR East Financial Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
+    # Botón de PayPal
+    # REEMPLAZA 'LiaRuiz' por tu usuario real de PayPal.me
+    mi_paypal = "https://paypal.me/LiaRB" 
+    
+    st.markdown(
+        f"""
+        <a href="https://paypal.com{mi_paypal}" target="_blank" style="text-decoration: none;">
+            <div style="background-color: #0070ba; color: white; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; font-size: 14px;">
+                { 'Contribute via PayPal' if lang == 'English' else 'Contribuir vía PayPal' }
+            </div>
+        </a>
+        """, 
+        unsafe_allow_html=True
+    )
+    
+    st.divider()
+    
+    # Fuentes y Metodología
+    m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
+    st.markdown(f"**{m_t}**")
+    st.caption("• [Eurostat 2025 Labor Costs](€34.9/h)")
+    st.caption("• [EC Competitiveness 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
+    st.caption("• [JR East Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf))")
+    
     st.divider()
     st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
     st.caption("© 2026 E-Link-U | Patent Pending | CC BY-NC-ND 4.0")
-    st.sidebar.divider()
-st.sidebar.subheader("Support the Mission")
 
 # 3. DICCIONARIO DE TEXTOS (COMPLETO)
 c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Alemania","Portugal":"Portugal","Belgium":"Bélgica","Netherlands":"Países Bajos","European Union":"Unión Europea"}
