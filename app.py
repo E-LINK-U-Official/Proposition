@@ -22,22 +22,6 @@ with st.sidebar:
     
     st.divider()
     
-    # Botón de PayPal
-    # REEMPLAZA 'LiaRuiz' por tu usuario real de PayPal.me
-    mi_paypal_user = "https://paypal.me/LiaRB " 
-    
-    st.markdown(
-        f"""
-        <a href="https://paypal.com{mi_paypal}" target="_blank" style="text-decoration: none;">
-            <div style="background-color: #0070ba; color: white; padding: 10px; border-radius: 5px; text-align: center; font-weight: bold; font-size: 14px;">
-                { 'Contribute via PayPal' if lang == 'English' else 'Contribuir vía PayPal' }
-            </div>
-        </a>
-        """, 
-        unsafe_allow_html=True
-    )
-    
-    st.divider()
     
     # Fuentes y Metodología
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
