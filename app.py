@@ -5,24 +5,35 @@ from supabase import create_client
 # 1. CONFIGURACIÓN DE PÁGINA
 st.set_page_config(page_title="E-Link-U Strategy Dashboard", layout="wide", page_icon="🚄")
 
-# Estilos CSS personalizados
+# Estilos CSS para el Chip y la interfaz
 st.markdown("""
     <style>
     .sector-card {
         padding: 20px; border-radius: 10px; border-left: 5px solid;
         background-color: #1e293b; margin-bottom: 10px; min-height: 220px;
     }
-    .stProgress > div > div > div > div { background-color: #28a745; }
     </style>
     """, unsafe_allow_html=True)
 
-# 2. SELECTOR DE IDIOMA
+# 2. SELECTOR DE IDIOMA EN EL SIDEBAR
 with st.sidebar:
     st.title("🌐 Language / Idioma")
     lang = st.radio("Select Interface Language:", ("English", "Español"), index=0)
     st.divider()
 
-# 3. DICCIONARIO DE TEXTOS (VERSIÓN HÍBRIDA FINAL)
+# Diccionario de Traducción de Países (Extraídos de Supabase)
+country_translation = {
+    "Spain": "España",
+    "Italy": "Italia",
+    "France": "Francia",
+    "Germany": "Alemania",
+    "Portugal": "Portugal",
+    "Belgium": "Bélgica",
+    "Netherlands": "Países Bajos",
+    "European Union": "Unión Europea"
+}
+
+# 3. DICCIONARIO MAESTRO DE TEXTOS (HÍBRIDO FINAL)
 text = {
     "English": {
         "title": "📊 E-Link-U: Regional Recovery Dashboard",
@@ -41,14 +52,15 @@ text = {
         "pillar_h": "🛡️ Strategic Pillars: Privacy & Resilience",
         "p1_t": "Zero-Knowledge Privacy", "p1_d": "Verifying eligibility without exposing private data. Sovereignty by design.",
         "p2_t": "Instant ROI", "p2_d": "Projected recovery of €459B/year. Implementation costs recovered in 30 days.",
-        "p3_t": "Hybrid Resilience", "p3_d": "Fail-safe: Digital convenience + Biometric Physical Cards for blackouts.",
+        "p3_t": "Hybrid Resilience", "p3_d": "Digital convenience + Biometric Physical Cards for blackouts or zero-battery.",
         "roadmap_h": "🗺️ Implementation Roadmap",
         "r1_t": "📍 Phase 1: Rural Pilot", "r1_d": "Focus: Seniors & Low-Connectivity. Smart Physical Cards as primary tool.",
         "r2_t": "🚄 Phase 2: EU Corridors", "r2_d": "Focus: Mobile Workforce. Hybrid deployment for cross-border rail identity.",
         "r3_t": "🌐 Phase 3: Total Interop", "r3_d": "Focus: Universal EU Citizenry. Card as permanent offline 'Anchor'.",
         "legal_h": "⚠️ Legal Disclaimer & Sovereignty Notice",
-        "legal_d": "Proprietary assets of Lia Ariadna Ruiz Ben. Aligned with GDPR and EUDI standards.",
-        "meth": "Verified 2025 Methodology"
+        "legal_d": "The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. Aligned with GDPR and EUDI standards.",
+        "meth": "Verified 2025 Methodology",
+        "col_country": "country_name"
     },
     "Español": {
         "title": "📊 E-Link-U: Panel de Recuperación Regional",
@@ -74,7 +86,8 @@ text = {
         "r3_t": "🌐 Fase 3: Interop Total", "r3_d": "Foco: Ciudadanía Universal UE. La tarjeta como 'Ancla' offline permanente.",
         "legal_h": "⚠️ Aviso Legal y de Soberanía",
         "legal_d": "Activos propietarios de Lia Ariadna Ruiz Ben. Conforme a RGPD y estándares EUDI.",
-        "meth": "Metodología Verificada 2025"
+        "meth": "Metodología Verificada 2025",
+        "col_country": "País"
     }
 }[lang]
 
@@ -89,13 +102,18 @@ try:
         response = supabase.table("country_impact").select("*").execute()
         return pd.DataFrame(response.data)
 
-    df = fetch_data()
+    df_raw = fetch_data()
 
-    if not df.empty:
+    if not df_raw.empty:
+        # TRADUCCIÓN DINÁMICA DE LA TABLA
+        df = df_raw.copy()
+        if lang == "Español":
+            df['country_name'] = df['country_name'].map(country_translation).fillna(df['country_name'])
+
         st.title(text["title"])
         st.markdown(f"### {text['subtitle']}")
 
-        # --- CALCULADORA Y BENCHMARK ---
+        # --- SECCIÓN 1: CALCULADORA Y BENCHMARK ---
         st.header(text["calc_h"])
         c_calc, c_bench = st.columns(2)
         with c_calc:
@@ -112,11 +130,12 @@ try:
         st.divider()
         st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
 
-        # --- TABLA CON DEGRADADO ---
+        # --- SECCIÓN 2: TABLA CON DEGRADADO ---
         st.subheader(text["table_h"])
-        st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
+        df_display = df.rename(columns={"country_name": text["col_country"]})
+        st.dataframe(df_display.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- CHIP VISUAL ---
+        # --- SECCIÓN 3: CHIP VISUAL ---
         st.divider()
         st.header(text["chip_h"])
         st.info(f"💡 {text['chip_info']}")
@@ -128,7 +147,7 @@ try:
         with c3:
             st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3 style="color: #007bff;">{text["s3_t"]}</h3><p>{text["s3_p"]}</p></div>', unsafe_allow_html=True)
 
-        # --- PILARES ---
+        # --- SECCIÓN 4: PILARES ---
         st.divider()
         st.header(text["pillar_h"])
         pa, pb, pc = st.columns(3)
@@ -136,7 +155,7 @@ try:
         with pb: st.subheader(text["p2_t"]); st.write(text["p2_d"])
         with pc: st.subheader(text["p3_t"]); st.write(text["p3_d"])
 
-        # --- ROADMAP ---
+        # --- SECCIÓN 5: ROADMAP ---
         st.divider()
         st.header(text["roadmap_h"])
         r1, r2, r3 = st.columns(3)
@@ -144,7 +163,7 @@ try:
         with r2: st.info(f"### {text['r2_t']}\n\n{text['r2_d']}")
         with r3: st.info(f"### {text['r3_t']}\n\n{text['r3_d']}")
 
-        # --- AVISO LEGAL ---
+        # --- SECCIÓN 6: AVISO LEGAL ---
         st.divider()
         st.markdown(f"""
             <div style="background-color: #1e293b; padding: 20px; border-radius: 10px; border-left: 5px solid #f1c40f;">
@@ -159,7 +178,7 @@ try:
 except Exception as e:
     st.error(f"System connection status: {e}")
 
-# --- SIDEBAR (GOBERNANZA Y FUENTES 2025) ---
+# --- SIDEBAR: GOBERNANZA Y FUENTES 2025 ---
 with st.sidebar:
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
@@ -167,9 +186,9 @@ with st.sidebar:
     st.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
     st.divider()
     st.markdown(f"**{text['meth']}**")
-    st.caption(f"• [Eurostat 2025 Labor Costs: €34.9/h](https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260331-2)")
-    st.caption(f"• [Single Market & Competitiveness Report 2025](https://single-market-economy.ec.europa.eu/publications/2025-annual-single-market-and-competitiveness-report_en)")
-    st.caption(f"• [JR East Financial Integrated Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
+    st.caption("• [Eurostat 2025 Labor Costs: €34.9/h](https://europa.eu)")
+    st.caption("• [EC Single Market & Competitiveness Report 2025](https://europa.eu)")
+    st.caption("• [JR East Financial Integrated Report 2025](https://jreast.co.jp)")
     st.divider()
     st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
     st.caption("© 2026 E-Link-U | Patent Pending | Licensed under CC BY-NC-ND 4.0")
