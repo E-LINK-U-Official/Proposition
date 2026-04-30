@@ -18,7 +18,7 @@ with st.sidebar:
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
     # Enlaces corregidos y funcionales
     st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625)")
-    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://doi.org/10.5281/zenodo.19876558")
+    st.write("🔗 **DOI:** [10.5281/zenodo.19876558](//doi.org/10.5281/zenodo.19876558)")
     st.divider()
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
