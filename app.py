@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from supabase import create_client
 
-# 1. SETUP & UI
+# 1. SETUP & UI 
 st.set_page_config(page_title="E-Link-U Strategy", layout="wide", page_icon="🚄")
 st.markdown("""<style>
     .sector-card {padding:20px; border-radius:10px; border-left:5px solid; background-color:#1e293b; margin-bottom:10px; min-height:220px;}
