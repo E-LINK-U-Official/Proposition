@@ -5,8 +5,21 @@ from supabase import create_client
 # 1. Page Configuration
 st.set_page_config(page_title="E-Link-U Strategy Dashboard", layout="wide", page_icon="🚄")
 
+# Estilo personalizado para las tarjetas del Chip
+st.markdown("""
+    <style>
+    .sector-card {
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid;
+        background-color: #0e1117;
+        margin-bottom: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.title("📊 E-Link-U: Regional Recovery Dashboard")
-st.markdown("### Recovering the €459B Friction Gap in European Infrastructure")
+st.markdown("### Deteniendo la Hemorragia Administrativa de 459.000 M€")
 
 # 2. Secure Database Connection
 try:
@@ -25,86 +38,117 @@ try:
     if not df.empty:
         
         # --- SECTION 1: REGIONAL SAVINGS CALCULATOR ---
-        st.header("🎯 Regional Savings Calculator")
-        col1, col2 = st.columns(2)
+        col_title, col_calc = st.columns([2, 1])
+        with col_title:
+            st.header("🎯 Calculadora de Recuperación Regional")
         
+        col1, col2 = st.columns(2)
         with col1:
-            country_selected = st.selectbox("Select a Country to Audit:", df['country_name'].unique())
+            country_selected = st.selectbox("Seleccione un país para auditar:", df['country_name'].unique())
             country_data = df[df['country_name'] == country_selected].iloc[0]
             
         with col2:
-            st.metric(label=f"Potential Recovery for {country_selected}", 
-                      value=f"€{country_data['rural_recovery_potential']:.2f} Billion")
+            st.metric(label=f"Potencial de recuperación para {country_selected}", 
+                      value=f"€{country_data['rural_recovery_potential']:.2f} Billion",
+                      delta="Objetivo Anual")
 
         st.divider()
 
         # --- SECTION 2: VISUALIZATION ---
-        st.subheader("Comparison: Annual Loss vs. E-Link-U Recovery")
-        st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'])
+        st.subheader("Comparativa: Pérdida Anual vs. Recuperación E-Link-U")
+        st.bar_chart(data=df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
         
-        st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
+        with st.expander("Ver tabla de datos detallada"):
+            st.dataframe(df.style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- SECTION 3: STRATEGIC PILLARS (Hybrid Resilience) ---
+        # --- NEW SECTION: TRIPLE-SECTOR CHIP ARCHITECTURE (VISUAL) ---
         st.divider()
-        st.header("🛡️ Strategic Pillars: Privacy & Implementation")
+        st.header("🔒 Arquitectura del Chip Triple-Sector")
+        st.info("💡 **Gating Biométrico:** La antena NFC permanece físicamente inactiva hasta la validación de huella dactilar en vivo.")
+        
+        c1, c2, c3 = st.columns(3)
+        
+        with c1:
+            st.markdown(f"""
+                <div class="sector-card" style="border-left-color: #28a745;">
+                    <h3 style="color: #28a745;">🟢 Sector Verde</h3>
+                    <p><b>Finanzas y Energía</b></p>
+                    <ul>
+                        <li>Pagos C2C Offline</li>
+                        <li>Créditos Energéticos</li>
+                        <li>Soberanía Transaccional</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+            
+        with c2:
+            st.markdown(f"""
+                <div class="sector-card" style="border-left-color: #dc3545;">
+                    <h3 style="color: #dc3545;">🔴 Sector Rojo</h3>
+                    <p><b>Salud Soberana</b></p>
+                    <ul>
+                        <li>Historial Médico Portátil</li>
+                        <li>Validación ZKP</li>
+                        <li>Acceso en Emergencias</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+            
+        with c3:
+            st.markdown(f"""
+                <div class="sector-card" style="border-left-color: #007bff;">
+                    <h3 style="color: #007bff;">🔵 Sector Azul</h3>
+                    <p><b>Identidad Legal</b></p>
+                    <ul>
+                        <li>eIDAS 2.0 / SSI</li>
+                        <li>DIDs (Identificadores)</li>
+                        <li>Interoperabilidad Total</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+
+        # --- SECTION 3: STRATEGIC PILLARS ---
+        st.divider()
+        st.header("🛡️ Pilares Estratégicos")
 
         col_a, col_b, col_c = st.columns(3)
 
         with col_a:
-            st.subheader("Zero-Knowledge Privacy")
-            st.write("E-Link-U uses **ZKP protocols**. We verify eligibility *without* exposing private data. Sovereignty by design.")
+            st.subheader("Privacidad ZKP")
+            st.write("Protocolos **Zero-Knowledge**. Verificamos elegibilidad *sin* exponer datos privados. Soberanía por diseño.")
 
         with col_b:
-            st.subheader("Instant ROI")
-            st.write("With a projected recovery of **€459B/year**, implementation costs are recovered within the first 30 days.")
+            st.subheader("ROI Instantáneo")
+            st.write("Con una recuperación proyectada de **459B€/año**, los costes de implementación se amortizan en los primeros 30 días.")
 
         with col_c:
-            st.subheader("Hybrid Access & Resilience")
-            st.write("A fail-safe ecosystem: **Digital Interface** for daily convenience and **Biometric Physical Cards** for blackouts, cyber-attacks, or zero-battery scenarios.")
+            st.subheader("Resiliencia Híbrida")
+            st.write("Ecosistema a prueba de fallos: Interfaz Digital y **Tarjetas Físicas Biométricas** para apagones o ataques cibernéticos.")
 
-        # --- SECTION 4: ROADMAP (Hybrid Approach) ---
+        # --- SECTION 4: ROADMAP ---
         st.divider()
-        st.header("🗺️ Implementation Roadmap (Hoja de Ruta)")
+        st.header("🗺️ Hoja de Ruta de Implementación")
         
         r1, r2, r3 = st.columns(3)
-        
         with r1:
-            st.markdown("### 📍 Phase 1: Rural Pilot")
-            st.info("**Focus:** Seniors & Low-Connectivity Regions\n\n**Action:** Smart Physical Cards as the primary sovereign tool.")
-            
+            st.markdown("### 📍 Fase 1: Piloto Rural")
+            st.info("**Foco:** Mayores y Zonas de Baja Conectividad\n\n**Acción:** Tarjeta Física como herramienta soberana primaria.")
         with r2:
-            st.markdown("### 🚄 Phase 2: EU Corridors")
-            st.info("**Focus:** Mobile Workforce & Travelers\n\n**Action:** Hybrid deployment (Digital + Physical Card) for uninterrupted cross-border rail identity.")
-            
+            st.markdown("### 🚄 Fase 2: Corredores UE")
+            st.info("**Foco:** Trabajadores Móviles y Viajeros\n\n**Acción:** Despliegue híbrido para identidad ferroviaria transfronteriza.")
         with r3:
-            st.markdown("### 🌐 Phase 3: Total Interop")
-            st.info("**Focus:** Universal EU Citizenry\n\n**Action:** Full integration with the Physical Card acting as the permanent offline 'Anchor'.")
-
-        # --- THE TRIPLE SECTOR SECTIONS ---
-        st.divider()
-        st.header("🔒 e-link-u: Triple-Sector Sovereign Architecture")
-        t1, t2, t3 = st.tabs(["💰 Finance", "🏥 Health", "🆔 Identity"])
-        
-        with t1:
-            st.markdown("<h3 style='color: #28a745;'>💰 Finance Sector (Green)</h3>", unsafe_allow_html=True)
-            st.write("Offline C2C Economy. The Physical Card ensures trade continues during power outages or bank hacks.")
-        with t2:
-            st.markdown("<h3 style='color: #dc3545;'>🏥 Health Sector (Red)</h3>", unsafe_allow_html=True)
-            st.write("Critical health data accessible via Card during emergencies in tunnels or remote areas with no signal.")
-        with t3:
-            st.markdown("<h3 style='color: #007bff;'>🆔 Identity Sector (Blue)</h3>", unsafe_allow_html=True)
-            st.write("Self-Sovereign Identity. The card serves as the offline Master-Key for border security.")
-            import pandas as pd
+            st.markdown("### 🌐 Fase 3: Interop Total")
+            st.info("**Foco:** Ciudadanía Universal UE\n\n**Acción:** Integración total con la Tarjeta Física como 'Ancla' offline.")
 
         # --- LEGAL DISCLAIMER ---
         st.divider()
         st.markdown(
             """
             <div style="background-color: #1e293b; padding: 20px; border-radius: 10px; border-left: 5px solid #f1c40f;">
-                <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;">⚠️ Legal Disclaimer & Sovereignty Notice</p>
+                <p style="color: #f1c40f; font-weight: bold; margin-bottom: 5px;">⚠️ Aviso Legal y de Soberanía</p>
                 <p style="color: white; font-size: 0.9em;">
-                    The e-link-u architecture and the Umatter protocol are proprietary assets of Lia Ariadna Ruiz Ben. 
-                    This hybrid framework aligns with GDPR and European Digital Identity (EUDI) standards. 
+                    La arquitectura e-link-u y el protocolo Umatter son activos propietarios de Lia Ariadna Ruiz Ben. 
+                    Este marco híbrido cumple con los estándares GDPR e Identidad Digital Europea (EUDI). 
                 </p>
             </div>
             """, 
@@ -112,16 +156,18 @@ try:
         )
 
     else:
-        st.warning("Awaiting database sync...")
+        st.warning("Esperando sincronización de base de datos...")
 
 except Exception as e:
-    st.error(f"System connection status: {e}")
+    st.error(f"Estado de conexión del sistema: {e}")
 
 # --- SIDEBAR ---
+st.sidebar.title("E-Link-U Official")
 st.sidebar.markdown("---")
-st.sidebar.subheader("Project Governance")
-st.sidebar.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
+st.sidebar.subheader("Gobernanza del Proyecto")
+st.sidebar.write("👤 **Arquitecta:** Lia Ariadna Ruiz Ben")
 st.sidebar.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org)")
 st.sidebar.write("🔗 **DOI:** [10.5281/zenodo.19876558](https://zenodo.org)")
+st.sidebar.write("---")
 st.sidebar.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
-st.sidebar.caption("© 2026 E-Link-U | Patent Pending| Licensed under CC BY-NC-ND 4.0 ")
+st.sidebar.caption("© 2026 E-Link-U | Patent Pending | Licensed under CC BY-NC-ND 4.0")
