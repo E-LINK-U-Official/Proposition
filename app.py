@@ -31,18 +31,6 @@ with st.sidebar:
     st.caption("© 2026 E-Link-U | Patent Pending | CC BY-NC-ND 4.0")
     st.sidebar.divider()
 st.sidebar.subheader("Support the Mission")
-# Botón de donación (puedes cambiar el link por tu PayPal o Gumroad)
-st.sidebar.markdown(
-    """
-    <a href="https://buymeacoffee.com" target="_blank">
-        <img src="https://buymeacoffee.com" 
-        alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" >
-    </a>
-    """, 
-    unsafe_allow_html=True
-)
-st.sidebar.caption("Support the 2025 Audit expansion.")
-
 
 # 3. DICCIONARIO DE TEXTOS (COMPLETO)
 c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Alemania","Portugal":"Portugal","Belgium":"Bélgica","Netherlands":"Países Bajos","European Union":"Unión Europea"}
