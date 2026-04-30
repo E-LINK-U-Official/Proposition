@@ -168,34 +168,6 @@ try:
                 "vs. la Tarjeta Biométrica E-Link-U (Validación instantánea, acceso offline, sin brecha digital)."
             )
 
-                # --- SECCIÓN COMERCIAL Y CASOS DE USO ---
-        st.divider()
-        st.header("💼 " + ("Solutions & Strategic Consulting" if lang == "English" else "Soluciones y Consultoría Estratégica"))
-        
-        col_c1, col_c2 = st.columns(2)
-        
-        with col_c1:
-            st.subheader("🏢 " + ("For Governments & Institutions" if lang == "English" else "Para Gobiernos e Instituciones"))
-            st.write(
-                "• **Administrative Friction Audit:** Custom reports for regions and municipalities.\n"
-                "• **SSI & eIDAS 2.0 Integration:** Strategic roadmap for Digital Identity Wallets.\n"
-                "• **NextGenEU Grant Writing:** Technical alignment for infrastructure funding." 
-                if lang == "English" else 
-                "• **Auditoría de Fricción:** Informes personalizados para regiones y municipios.\n"
-                "• **Integración SSI y eIDAS 2.0:** Hoja de ruta para carteras de identidad digital.\n"
-                "• **Fondos NextGenEU:** Alineación técnica para solicitar financiación de infraestructura."
-            )
-            
-        with col_c2:
-            st.subheader("👵 " + ("The Human Impact (Case Study)" if lang == "English" else "Impacto Humano (Caso de Uso)"))
-            st.info(
-                "**The Beatrix Journey:** Compare a senior citizen accessing health services today (4 hours of friction) "
-                "vs. the E-Link-U Biometric Card (Instant validation, offline access, zero digital gap)."
-                if lang == "English" else
-                "**El Viaje de Beatrix:** Compara a un ciudadano mayor accediendo a salud hoy (4 horas de trámites) "
-                "vs. la Tarjeta Biométrica E-Link-U (Validación instantánea, acceso offline, sin brecha digital)."
-            )
-
         # Botón de contacto directo
         st.write("---")
         mi_email = "lia@elinku.org"
