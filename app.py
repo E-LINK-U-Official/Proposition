@@ -1,11 +1,11 @@
-import streamlit as stimport streamlit as st
+import streamlit as st
 import pandas as pd
 from supabase import create_client
 
 # 1. SETUP & UI
 st.set_page_config(page_title="E-Link-U Strategy", layout="wide", page_icon="🚄")
 st.markdown("""<style>
-    .sector-card {padding:20px; border-radius:10px; border-left:5px solid; background-color:#1e293b; margin-bottom:10px; min-height:200px;}
+    .sector-card {padding:20px; border-radius:10px; border-left:5px solid; background-color:#1e293b; margin-bottom:10px; min-height:220px;}
     .stMetric {background-color:#0e1117; padding:15px; border-radius:10px;}
 </style>""", unsafe_allow_html=True)
 
@@ -28,7 +28,7 @@ with st.sidebar:
     st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
     st.caption("© 2026 E-Link-U | Patent Pending | CC BY-NC-ND 4.0")
 
-# 3. DICCIONARIO DE TEXTOS (COMPLETO CON DETALLES)
+# 3. DICCIONARIO DE TEXTOS (COMPLETO)
 c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Alemania","Portugal":"Portugal","Belgium":"Bélgica","Netherlands":"Países Bajos","European Union":"Unión Europea"}
 T = {
     "English": {
@@ -47,7 +47,7 @@ T = {
         "p1_t": "Zero-Knowledge Privacy", "p1_d": "Verifying eligibility without exposing private data. Sovereignty by design.",
         "p2_t": "Instant ROI", "p2_d": "Projected recovery of €459B/year. Implementation costs recovered in 30 days.",
         "p3_t": "Hybrid Resilience", "p3_d": "Digital convenience + Biometric Physical Cards for blackouts or zero-battery.",
-        "roadmap_h": "🗺️ Implementation Roadmap (Hoja de Ruta)",
+        "roadmap_h": "🗺️ Implementation Roadmap",
         "r1_t": "📍 Phase 1: Rural Pilot", "r1_d": "**Focus:** Seniors & Low-Connectivity.\n\n**Action:** Smart Physical Cards as the primary sovereign tool.",
         "r2_t": "🚄 Phase 2: EU Corridors", "r2_d": "**Focus:** Mobile Workforce & Travelers.\n\n**Action:** Hybrid deployment (Digital + Card) for cross-border rail.",
         "r3_t": "🌐 Phase 3: Total Interop", "r3_d": "**Focus:** Universal EU Citizenry.\n\n**Action:** Full integration with the Physical Card as the permanent offline 'Anchor'.",
@@ -110,13 +110,13 @@ try:
         st.subheader(T["tab_h"])
         st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- ARQUITECTURA TRIPLE SECTOR (DETALLADA) ---
+        # --- ARQUITECTURA TRIPLE SECTOR ---
         st.divider()
         st.header(T["chip_h"])
         st.info(f"💡 {T['chip_i']}")
         sc1, sc2, sc3 = st.columns(3)
         with sc1: st.markdown(f'<div class="sector-card" style="border-left-color: #28a745;"><h3 style="color:#28a745;">{T["s1_t"]}</h3><p>{T["s1_p"]}</p></div>', unsafe_allow_html=True)
-        with sc2: st.markdown(f'<div class="sector-card" style="border-left-color: #dc3545;"><h3 style="color:#dc3545;">{text[lang]["s2_t"]}</h3><p>{T["s2_p"]}</p></div>', unsafe_allow_html=True)
+        with sc2: st.markdown(f'<div class="sector-card" style="border-left-color: #dc3545;"><h3 style="color:#dc3545;">{T["s2_t"]}</h3><p>{T["s2_p"]}</p></div>', unsafe_allow_html=True)
         with sc3: st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3 style="color:#007bff;">{T["s3_t"]}</h3><p>{T["s3_p"]}</p></div>', unsafe_allow_html=True)
 
         # --- PILARES ---
@@ -125,14 +125,14 @@ try:
         pa, pb, pc = st.columns(3)
         with pa: st.subheader(T["p1_t"]); st.write(T["p1_d"])
         with pb: st.subheader(T["p2_t"]); st.write(T["p2_d"])
-        with pc: st.subheader(T["p3_t"]); st.write(text[lang]["p3_d"])
+        with pc: st.subheader(T["p3_t"]); st.write(T["p3_d"])
 
-        # --- ROADMAP (DETALLADO) ---
+        # --- ROADMAP ---
         st.divider()
         st.header(T["roadmap_h"])
         r1, r2, r3 = st.columns(3)
         with r1: st.info(f"### {T['r1_t']}\n\n{T['r1_d']}")
-        with r2: st.info(f"### {text[lang]['r2_t']}\n\n{T['r2_d']}")
+        with r2: st.info(f"### {T['r2_t']}\n\n{T['r2_d']}")
         with r3: st.info(f"### {T['r3_t']}\n\n{T['r3_d']}")
 
         st.divider()
