@@ -24,7 +24,7 @@ with st.sidebar:
     
     # Botón de PayPal
     # REEMPLAZA 'LiaRuiz' por tu usuario real de PayPal.me
-    mi_paypal = "https://paypal.me/LiaRB or @LiaRB" 
+    mi_paypal_user = "https://paypal.me/LiaRB " 
     
     st.markdown(
         f"""
