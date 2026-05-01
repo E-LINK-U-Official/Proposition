@@ -3,7 +3,7 @@ import pandas as pd
 from supabase import create_client
 
 # 1. SETUP & UI 
-st.set_page_config(page_title="E-Link-U Strategy", layout="wide", page_icon="🚄")
+st.set_page_config(page_title="E-Link-U™ Strategy", layout="wide", page_icon="🚄")
 st.markdown("""<style>
     .sector-card {padding:20px; border-radius:10px; border-left:5px solid; background-color:#1e293b; margin-bottom:10px; min-height:220px;}
     .stMetric {background-color:#0e1117; padding:15px; border-radius:10px;}
@@ -30,8 +30,8 @@ with st.sidebar:
     st.caption("• [JR East Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
     
     st.divider()
-    st.info("E-Link-U OÜ (Estonia) | Proprietary Architecture")
-    st.caption("© 2026 E-Link-U | Patent Pending | CC BY-NC-ND 4.0")
+    st.info("E-Link-U™ OÜ (Estonia) | Proprietary Architecture")
+    st.caption("© 2026 E-Link-U™ | Patent Pending | CC BY-NC-ND 4.0")
 
 # 3. DICCIONARIO DE TEXTOS (COMPLETO)
 c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Alemania","Portugal":"Portugal","Belgium":"Bélgica","Netherlands":"Países Bajos","European Union":"Unión Europea"}
