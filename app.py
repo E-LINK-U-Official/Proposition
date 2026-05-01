@@ -37,7 +37,7 @@ with st.sidebar:
 c_map = {"Spain":"España","Italy":"Italia","France":"Francia","Germany":"Alemania","Portugal":"Portugal","Belgium":"Bélgica","Netherlands":"Países Bajos","European Union":"Unión Europea"}
 T = {
     "English": {
-        "title": "📊 E-Link-U: Regional Recovery Dashboard",
+        "title": "📊 E-Link-U™: Regional Recovery Dashboard",
         "sub": "Recovering the €459B Friction Gap (2025 Audit)",
         "calc_h": "🎯 Regional Savings Calculator", "sel": "Select a Country to Audit:", "met": "Potential Recovery",
         "comp_h": "📉 Friction Benchmark: EU vs. Japan (2025)", 
@@ -59,7 +59,7 @@ T = {
         "leg": "⚠️ Legal: Proprietary assets of Lia Ariadna Ruiz Ben. GDPR & EUDI compliant.", "col": "country_name"
     },
     "Español": {
-        "title": "📊 E-Link-U: Panel de Recuperación Regional",
+        "title": "📊 E-Link-U™: Panel de Recuperación Regional",
         "sub": "Recuperando los 459.000 M€ de brecha de fricción (Auditoría 2025)",
         "calc_h": "🎯 Calculadora de Ahorro Regional", "sel": "Seleccione un país para auditar:", "met": "Recuperación Potencial",
         "comp_h": "📉 Benchmark de Fricción: UE vs. Japón (2025)", 
