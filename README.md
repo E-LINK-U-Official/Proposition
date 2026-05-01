@@ -5,8 +5,8 @@
 ## 🧠 The Method 
 This is not an estimate; it is a **Comparative Infrastructure Audit**. Our architecture is documented in two foundational White Papers defining the technical and humanitarian protocols of the ecosystem:
 
-*   **White Paper 1: The Infrastructure Pilot** ([DOI: 10.5281/zenodo.19876558](https://zenodo.org))
-*   **White Paper 2: The Global Mission** ([DOI: 10.5281/zenodo.19876558](https://zenodo.org))
+*   **White Paper 1: The Infrastructure Pilot** ([DOI: 10.5281/zenodo.19939204](https://zenodo.org))
+*   **White Paper 2: The Global Mission** ([DOI:10.5281/zenodo.19939204](https://zenodo.org))
 
 ---
 
@@ -71,8 +71,8 @@ Achieve the **€459B annual recovery target** across the 27 EU member states.
 ## 🧠 El Método
 Estos datos no son una estimación; son una **Auditoría Comparativa de Infraestructura**. La arquitectura de E-Link-U está documentada en dos White Papers fundacionales que definen los protocolos técnicos y humanitarios del ecosistema:
 
-*   **White Paper 1: El Piloto de Infraestructura** ([DOI: 10.5281/zenodo.19876558](https://zenodo.org))
-*   **White Paper 2: La Misión Global** ([DOI: 10.5281/zenodo.19876558](https://zenodo.org))
+*   **White Paper 1: El Piloto de Infraestructura** ([DOI: 10.5281/zenodo.19939204](https://zenodo.org))
+*   **White Paper 2: La Misión Global** ([DOI: 10.5281/zenodo.19939204](https://zenodo.org))
 
 ---
 
