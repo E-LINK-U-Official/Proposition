@@ -18,9 +18,11 @@ with st.sidebar:
     st.subheader("Project Governance")
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
     st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625)")
-    st.write("🔗 **DOI:** [10.5281/zenodo.19939204](//doi.org/10.5281/zenodo.19876558)")
+    st.write("🔗 **DOI:** [10.5281/zenodo.20045806](//doi.org/10.5281/zenodo.20045806)")
     
     st.divider()
+
+
     
     # Fuentes y Metodología
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
@@ -30,7 +32,7 @@ with st.sidebar:
     st.caption("• [JR East Report 2025](https://www.jreast.co.jp/eco/pdf/pdf_2025/all_e.pdf)")
     
     st.divider()
-    st.info("E-Link-U™ OÜ (Estonia) | Proprietary Architecture")
+    st.info("E-Link-U™| Proprietary Architecture")
     st.caption("© 2026 E-Link-U™ | Patent Pending | CC BY-NC-ND 4.0")
 
 # 3. DICCIONARIO DE TEXTOS (COMPLETO)
