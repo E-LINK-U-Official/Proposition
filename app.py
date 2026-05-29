@@ -116,7 +116,7 @@ try:
         st.bar_chart(df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
         
         st.subheader(T["tab_h"])
-        st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
+        st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width='stretch')
 
         # --- TRIPLE SECTOR ---
         st.divider()
