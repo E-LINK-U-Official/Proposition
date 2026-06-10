@@ -147,7 +147,7 @@ if not df_raw.empty:
 else:
     st.error("❌ No se encontraron datos para desplegar el cuadro de mando.")
 
-        # --- PILARES ESTRATÉGICOS ---
+            # --- PILARES ESTRATÉGICOS ---
         st.divider()
         st.header(T["pillar_h"])
         p1, p2, p3 = st.columns(3)
@@ -175,3 +175,13 @@ else:
             st.markdown(f"### {T['r3_t']}")
             st.write(T['r3_d'])
 
+        st.divider()
+        st.caption(T["leg"])
+
+except Exception as e:
+    st.error(f"Error: {e}")
+
+
+
+
+        
