@@ -46,7 +46,7 @@ T = {
         "comp_h": "📉 Friction Benchmark: EU vs. Japan (2025)", 
         "comp_txt": "Japan (Suica) operates at €50 friction/year. EU averages €1,020. Recovery: €970/person.",
         "tab_h": "📋 Detailed Impact Data (Annual Loss in Billions)",
-        "chip_h": "🔒 e-link-u: Triple-Sector Sovereign Architecture",
+        "chip_h": "🔒 E-Link-U™: Triple-Sector Sovereign Architecture",
         "chip_i": "Antenna is physically locked until a live fingerprint is detected. No biometric data ever leaves the card.",
         "s1_t": "🟢 Finance Sector", "s1_p": "Offline C2C Economy. Trade continues during power outages or bank hacks. Energy credits and managed aids.",
         "s2_t": "🔴 Health Sector", "s2_p": "Critical health data accessible via Card during emergencies in remote areas with no signal.",
