@@ -174,13 +174,10 @@ else:
     with r3:
         st.markdown(f"### {T['r3_t']}")
         st.write(T['r3_d'])
-
         st.divider()
         st.caption(T["leg"])
-
-except Exception as e:
-    st.error(f"Error: {e}")
-
+    except Exception as e:
+        st.error(f"Error: {e}")
     
 
           
