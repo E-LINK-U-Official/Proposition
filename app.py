@@ -147,33 +147,33 @@ if not df_raw.empty:
 else:
     st.error("❌ No se encontraron datos para desplegar el cuadro de mando.")
 
-            # --- PILARES ESTRATÉGICOS ---
-        st.divider()
-        st.header(T["pillar_h"])
-        p1, p2, p3 = st.columns(3)
-        with p1:
-            st.subheader(T["p1_t"])
-            st.write(T["p1_d"])
-        with p2:
-            st.subheader(T["p2_t"])
-            st.write(T["p2_d"])
-        with p3:
-            st.subheader(T["p3_t"])
-            st.write(T["p3_d"])
+    # --- PILARES ESTRATÉGICOS ---
+    st.divider()
+    st.header(T["pillar_h"])
+    p1, p2, p3 = st.columns(3)
+    with p1:
+        st.subheader(T["p1_t"])
+        st.write(T["p1_d"])
+    with p2:
+        st.subheader(T["p2_t"])
+        st.write(T["p2_d"])
+    with p3:
+        st.subheader(T["p3_t"])
+        st.write(T["p3_d"])
 
-        # --- HOJA DE RUTA ---
-        st.divider()
-        st.header(T["roadmap_h"])
-        r1, r2, r3 = st.columns(3)
-        with r1:
-            st.markdown(f"### {T['r1_t']}")
-            st.write(T['r1_d'])
-        with r2:
-            st.markdown(f"### {T['r2_t']}")
-            st.write(T['r2_d'])
-        with r3:
-            st.markdown(f"### {T['r3_t']}")
-            st.write(T['r3_d'])
+    # --- HOJA DE RUTA ---
+    st.divider()
+    st.header(T["roadmap_h"])
+    r1, r2, r3 = st.columns(3)
+    with r1:
+        st.markdown(f"### {T['r1_t']}")
+        st.write(T['r1_d'])
+    with r2:
+        st.markdown(f"### {T['r2_t']}")
+        st.write(T['r2_d'])
+    with r3:
+        st.markdown(f"### {T['r3_t']}")
+        st.write(T['r3_d'])
 
         st.divider()
         st.caption(T["leg"])
@@ -181,7 +181,6 @@ else:
 except Exception as e:
     st.error(f"Error: {e}")
 
+    
 
-
-
-        
+          
