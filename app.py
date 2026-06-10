@@ -19,9 +19,12 @@ with st.sidebar:
     st.write("👤 **Architect:** Lia Ariadna Ruiz Ben")
     st.write("🆔 **ORCID:** [0009-0006-2598-0625](https://orcid.org/0009-0006-2598-0625)")
     st.write("🔗 **DOI:** [10.5281/zenodo.20045806](https://doi.org/10.5281/zenodo.20045806)")
+    st.markdown("**📬 Contact / Contacto:**")
+    st.write("📧 [Email Me](mailto:Lia@elinku.org)")
+    st.write("💼 [LinkedIn Profile](https://linkedin.com/in/elinku)")
     
     st.divider()
-    
+
     # Fuentes y Metodología
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
     st.markdown(f"**{m_t}**")
