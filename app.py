@@ -128,13 +128,12 @@ if not df_raw.empty:
     st.bar_chart(df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
     
     st.subheader(T["tab_h"])
-    st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
+    st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width='stretch')
 
-    # --- TRIPLE SECTOR (CORREGIDO Y COMPLETADO) ---
+    # --- TRIPLE SECTOR ---
     st.divider()
     st.header(T["chip_h"])
     st.info(f"💡 {T['chip_i']}")
-    
     sc1, sc2, sc3 = st.columns(3)
     with sc1: 
         st.markdown(f'<div class="sector-card" style="border-left-color: #28a745;"><h3>{T["s1_t"]}</h3><p>{T["s1_p"]}</p></div>', unsafe_allow_html=True)
@@ -142,10 +141,6 @@ if not df_raw.empty:
         st.markdown(f'<div class="sector-card" style="border-left-color: #dc3545;"><h3>{T["s2_t"]}</h3><p>{T["s2_p"]}</p></div>', unsafe_allow_html=True)
     with sc3: 
         st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3>{T["s3_t"]}</h3><p>{T["s3_p"]}</p></div>', unsafe_allow_html=True)
-
-    st.caption(T["leg"])
-else:
-    st.error("❌ No se encontraron datos para desplegar el cuadro de mando.")
 
     # --- PILARES ESTRATÉGICOS ---
     st.divider()
@@ -174,8 +169,6 @@ else:
     with r3:
         st.markdown(f"### {T['r3_t']}")
         st.write(T['r3_d'])
-        st.divider()
-        st.caption(T["leg"])
-   
 
-          
+    st.divider()
+    st.caption(T["leg"])
