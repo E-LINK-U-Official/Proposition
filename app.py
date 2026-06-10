@@ -176,8 +176,6 @@ else:
         st.write(T['r3_d'])
         st.divider()
         st.caption(T["leg"])
-    except Exception as e:
-        st.error(f"Error: {e}")
-    
+   
 
           
