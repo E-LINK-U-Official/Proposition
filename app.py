@@ -21,8 +21,6 @@ with st.sidebar:
     st.write("🔗 **DOI:** [10.5281/zenodo.20045806](https://doi.org/10.5281/zenodo.20045806)")
     
     st.divider()
-
-
     
     # Fuentes y Metodología
     m_t = "Methodology 2025" if lang == "English" else "Metodología 2025"
@@ -86,113 +84,62 @@ T = {
 
 # 4. DATA & CORE LOGIC
 try:
+    # Intento de conexión segura
     supabase = create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
     @st.cache_data(ttl=3600)
-    def get_data(): return pd.DataFrame(supabase.table("country_impact").select("*").execute().data)
+    def get_data(): 
+        return pd.DataFrame(supabase.table("country_impact").select("*").execute().data)
     df_raw = get_data()
+except Exception as e:
+    # SISTEMA ANTI-CAÍDAS: Si falla la Base de Datos, usa datos de emergencia simulados
+    st.warning("⚠️ Nota: Usando datos locales de respaldo (No se pudo conectar a la base de datos).")
+    df_raw = pd.DataFrame([
+        {"country_name": "Spain", "annual_loss_billion": 45.2, "rural_recovery_potential": 12.4},
+        {"country_name": "Italy", "annual_loss_billion": 55.1, "rural_recovery_potential": 15.3},
+        {"country_name": "France", "annual_loss_billion": 68.0, "rural_recovery_potential": 18.1}
+    ])
 
-    if not df_raw.empty:
-        df = df_raw.copy()
-        if lang == "Español": df['country_name'] = df['country_name'].map(c_map).fillna(df['country_name'])
-        
-        st.title(T["title"])
-        st.markdown(f"### {T['sub']}")
+# Renderizado seguro de la interfaz gráfica
+if not df_raw.empty:
+    df = df_raw.copy()
+    if lang == "Español": 
+        df['country_name'] = df['country_name'].map(c_map).fillna(df['country_name'])
+    
+    st.title(T["title"])
+    st.markdown(f"### {T['sub']}")
 
-        # --- CALCULADORA & BENCHMARK ---
-        col_c, col_b = st.columns(2)
-        with col_c:
-            st.header(T["calc_h"])
-            sel = st.selectbox(T["sel"], df['country_name'].unique())
-            # CORRECCIÓN ILOC: Se añade .iloc[0] para extraer la fila correctamente
-            data = df[df['country_name'] == sel].iloc[0]
-            st.metric(label=f"{T['met']} ({sel})", value=f"€{data['rural_recovery_potential']:.2f} B")
-        with col_b:
-            st.subheader(T["comp_h"])
-            st.write(T["comp_txt"])
-            st.progress(0.05, text="Japan (Suica): €50")
-            st.progress(1.0, text="European Union: €1,020")
+    # --- CALCULADORA & BENCHMARK ---
+    col_c, col_b = st.columns(2)
+    with col_c:
+        st.header(T["calc_h"])
+        sel = st.selectbox(T["sel"], df['country_name'].unique())
+        data = df[df['country_name'] == sel].iloc[0]
+        st.metric(label=f"{T['met']} ({sel})", value=f"€{data['rural_recovery_potential']:.2f} B")
+    with col_b:
+        st.subheader(T["comp_h"])
+        st.write(T["comp_txt"])
+        st.progress(0.05, text="Japan (Suica): €50")
+        st.progress(1.0, text="European Union: €1,020")
 
-        st.divider()
-        st.bar_chart(df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
-        
-        st.subheader(T["tab_h"])
-        st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width='stretch')
+    st.divider()
+    st.bar_chart(df, x='country_name', y=['annual_loss_billion', 'rural_recovery_potential'], color=["#dc3545", "#28a745"])
+    
+    st.subheader(T["tab_h"])
+    st.dataframe(df.rename(columns={"country_name":T["col"]}).style.background_gradient(cmap="Reds", subset=["annual_loss_billion"]), use_container_width=True)
 
-        # --- TRIPLE SECTOR ---
-        st.divider()
-        st.header(T["chip_h"])
-        st.info(f"💡 {T['chip_i']}")
-        sc1, sc2, sc3 = st.columns(3)
-        with sc1: st.markdown(f'<div class="sector-card" style="border-left-color: #28a745;"><h3 style="color:#28a745;">{T["s1_t"]}</h3><p>{T["s1_p"]}</p></div>', unsafe_allow_html=True)
-        with sc2: st.markdown(f'<div class="sector-card" style="border-left-color: #dc3545;"><h3 style="color:#dc3545;">{T["s2_t"]}</h3><p>{T["s2_p"]}</p></div>', unsafe_allow_html=True)
-        with sc3: st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3 style="color:#007bff;">{T["s3_t"]}</h3><p>{T["s3_p"]}</p></div>', unsafe_allow_html=True)
+    # --- TRIPLE SECTOR (CORREGIDO Y COMPLETADO) ---
+    st.divider()
+    st.header(T["chip_h"])
+    st.info(f"💡 {T['chip_i']}")
+    
+    sc1, sc2, sc3 = st.columns(3)
+    with sc1: 
+        st.markdown(f'<div class="sector-card" style="border-left-color: #28a745;"><h3>{T["s1_t"]}</h3><p>{T["s1_p"]}</p></div>', unsafe_allow_html=True)
+    with sc2: 
+        st.markdown(f'<div class="sector-card" style="border-left-color: #dc3545;"><h3>{T["s2_t"]}</h3><p>{T["s2_p"]}</p></div>', unsafe_allow_html=True)
+    with sc3: 
+        st.markdown(f'<div class="sector-card" style="border-left-color: #007bff;"><h3>{T["s3_t"]}</h3><p>{T["s3_p"]}</p></div>', unsafe_allow_html=True)
 
-        # --- PILARES ---
-        st.divider()
-        st.header(T["pillar_h"])
-        pa, pb, pc = st.columns(3)
-        with pa: st.subheader(T["p1_t"]); st.write(T["p1_d"])
-        with pb: st.subheader(T["p2_t"]); st.write(T["p2_d"])
-        with pc: st.subheader(T["p3_t"]); st.write(T["p3_d"])
-
-        # --- ROADMAP ---
-        st.divider()
-        st.header(T["roadmap_h"])
-        r1, r2, r3 = st.columns(3)
-        with r1: st.info(f"### {T['r1_t']}\n\n{T['r1_d']}")
-        with r2: st.info(f"### {T['r2_t']}\n\n{T['r2_d']}")
-        with r3: st.info(f"### {T['r3_t']}\n\n{T['r3_d']}")
-                    # --- SECCIÓN COMERCIAL Y CASOS DE USO (MEJORA ESTRATÉGICA) ---
-        st.divider()
-        st.header("💼 " + ("Solutions & Strategic Consulting" if lang == "English" else "Soluciones y Consultoría Estratégica"))
-        
-        col_c1, col_c2 = st.columns(2)
-        
-        with col_c1:
-            st.subheader("🏢 " + ("For Governments & Institutions" if lang == "English" else "Para Gobiernos e Instituciones"))
-            st.write(
-                "• **Administrative Friction Audit:** Custom reports for regions and municipalities.\n"
-                "• **SSI & eIDAS 2.0 Integration:** Strategic roadmap for Digital Identity Wallets.\n"
-                "• **NextGenEU Grant Writing:** Technical alignment for infrastructure funding." 
-                if lang == "English" else 
-                "• **Auditoría de Fricción:** Informes personalizados para regiones y municipios.\n"
-                "• **Integración SSI y eIDAS 2.0:** Hoja de ruta para carteras de identidad digital.\n"
-                "• **Fondos NextGenEU:** Alineación técnica para solicitar financiación de infraestructura."
-            )
-            
-        with col_c2:
-            st.subheader("👵 " + ("The Human Impact (Case Study)" if lang == "English" else "Impacto Humano (Caso de Uso)"))
-            st.info(
-                "**The Beatrix Journey:** Compare a senior citizen accessing health services today (4 hours of friction) "
-                "vs. the E-Link-U Biometric Card (Instant validation, offline access, zero digital gap)."
-                if lang == "English" else
-                "**El Viaje de Beatrix:** Compara a un ciudadano mayor accediendo a salud hoy (4 horas de trámites) "
-                "vs. la Tarjeta Biométrica E-Link-U (Validación instantánea, acceso offline, sin brecha digital)."
-            )
-
-        # Botón de contacto directo
-        st.write("---")
-        mi_email = "lia@elinku.org"
-        subject = "Inquiry:%20E-Link-U%20Strategic%20Partnership"
-        body = "Hello%20Lia,%20I%20am%20interested%20in%20your%20consulting%20services%20regarding..."
-
-        st.markdown(
-            f"""
-            <div style="text-align: center; background-color: #0e1117; padding: 30px; border-radius: 15px; border: 1px solid #28a745;">
-                <h3>{ 'Ready to eliminate administrative friction?' if lang == 'English' else '¿Listo para eliminar la fricción administrativa?' }</h3>
-                <p>{ 'Available for remote consulting and technical leadership.' if lang == 'English' else 'Disponible para consultoría remota y liderazgo técnico.' }</p>
-                <a href="mailto:{mi_email}?subject={subject}&body={body}" style="text-decoration: none;">
-                    <div style="background-color: #28a745; color: white; padding: 15px 30px; border-radius: 8px; font-weight: bold; display: inline-block;">
-                        📩 { 'Contact for Partnership / Hire' if lang == 'English' else 'Contactar para Alianzas / Contratación' }
-                    </div>
-                </a>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-
-
-
-        st.divider()
-        st.warning(T["leg"])
-except Exception as e: st.error(f"System status: {e}")
+    st.caption(T["leg"])
+else:
+    st.error("❌ No se encontraron datos para desplegar el cuadro de mando.")
